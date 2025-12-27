@@ -43,8 +43,8 @@ const layer = L.stationModels(data, {
 
 ### Additional options
 - `scaling <object>`: options for fine-tuning symbology size
-    - `stationModel <number>`: global scaling for the final station model symbols. (default: 1)
-    - `font <number>`: global scaling for all font within the station model symbols. (default: 1)
+    - `stationModel <number>`: scaling for the final station model symbols, globally. (default: 1)
+    - `font <number>`: font scaling within the station model symbols, globally. (default: 1)
 - `temperature <string>`: ['raw'|'rounded'] plotting method for the temperature value TTT: "raw" plots tenths, "rounded" rounds value to the nearest degree. (default: 'raw') 
 - `dewPoint <string>`: ['raw'|'rounded'] plotting method for the dew-point temperature value T<sub>d</sub>T<sub>d</sub>T<sub>d</sub>: "raw" plots tenths, "rounded" rounds value to the nearest degree. (default: 'raw') 
 - `polyChromatic <boolean>`: if true, the polychromatic plotting method is used. This currently means, that the past weather reported from a manned station (W<sub>1</sub>W<sub>2</sub>) is plotted red, and amount (PPP) and characteristic of pressure tendency (a) will be plotted red, if pressure is decreasing (a >= 5). Moreover, in this case, the amount of pressure tendency (PPP) omits the minus sign. (default: true) *Note: This is an experimental option, can be refined/omitted later.*
