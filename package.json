@@ -1,0 +1,31 @@
+{
+  "name": "station-model-symbology",
+  "version": "1.0.0",
+  "description": "Dynamically generated, vector-based station model symbols for depicting weather observations on the client-side, for web maps. Compliant with [WMO-No. 306 \"Manual on Codes\", Volume I-1, Attachment IV](https://library.wmo.int/records/item/35713-manual-on-codes-volume-i-1-international-codes).",
+  "type": "module",
+  "main": "./src/main.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [
+    "station model",
+    "SYNOP",
+    "synoptic surface weather chart",
+    "surface weather observations",
+    "surface analysis",
+    "symbology",
+    "visualization",
+    "meteorology",
+    "web GIS",
+    "web cartography"
+  ],
+  "author": "Dániel Balla <balla.daniel@inf.elte.hu>",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^4.54.0",
+    "rollup-plugin-web-worker-loader": "^1.7.0"
+  }
+}

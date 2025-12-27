@@ -1,0 +1,132 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!--<title></title>-->
+
+		<!-- leaflet from CDN -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+		<script src="./station-model-symbology-Leaflet-UMD.js" crossorigin=""></script>
+
+		<style>
+			html, body {
+				height: 100%;
+				margin: 0;
+			}
+			
+			#map {
+				position: absolute;
+				margin: auto;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+			}		
+			
+			/* Info panel style (L.Control) */
+			.info {
+				padding: 6px 8px;
+				font: 14px/16px Arial, Helvetica, sans-serif;
+				background: white;
+				background: rgba(255,255,255,0.8);
+				box-shadow: 0 0 15px rgba(0,0,0,0.2);
+				border-radius: 5px;
+			}
+
+			/* Overriding Chrome's built-in CSS rules to avoid focus rectangle on clicking polygons on a Leaflet map */
+			path.leaflet-interactive:focus {
+				outline: none;
+			}
+		</style>
+	</head>
+	<body>		
+		<div id="map"></div>				
+		<script>	
+
+			// base maps
+			var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+			});
+			var carto_attrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
+			var carto_tileLayer_options = {
+				attribution: carto_attrib,
+				subdomains: 'abcd',
+				maxZoom: 20,
+				minZoom: 0
+			};
+			var cartodb_dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}' + (L.Browser.retina ? '@2x.png' : '.png'), );
+			var cartodb_voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}' + (L.Browser.retina ? '@2x.png' : '.png'), carto_tileLayer_options);
+			var cartodb_voyager_nolabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}' + (L.Browser.retina ? '@2x.png' : '.png'), carto_tileLayer_options);
+			var cartodb_positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}' + (L.Browser.retina ? '@2x.png' : '.png'), carto_tileLayer_options);
+			var cartodb_positron_nolabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}' + (L.Browser.retina ? '@2x.png' : '.png'), carto_tileLayer_options);
+			var baseMaps = {
+				"OpenStreetMap": OSM,
+				"CARTO Dark": cartodb_dark,
+				"CARTO Voyager": cartodb_voyager,
+				"CARTO Voyager (no labels)": cartodb_voyager_nolabels,
+				"CARTO Positron": cartodb_positron,
+				"CARTO Positron (no labels)": cartodb_positron_nolabels
+			};
+
+			// map div object, main Leaflet object:
+			var map = L.map('map', {layers: [cartodb_positron]}).setView([0,0], 3); 
+			map.attributionControl.setPrefix('<a href="https://leafletjs.com" title="A JavaScript library for interactive maps">Leaflet ' + L.version + '</a>');
+			map.createPane('front');
+			map.getPane('front').style.zIndex = 450;
+			var layerControl = L.control.layers(baseMaps, null, {collapsed: false}).addTo(map);
+			
+			// fetch the .geojson, then start working
+			fetch('./data/hungary_2025-09-06_06UTC_OGIMET_HUNGAROMET.geojson').then(r => r.json()).then(d => {
+
+				// tooltip, just to see the SYNOP string. Leaflet feature.
+				function tooltip(feature, layer) {
+					if (feature.properties != null) {
+						var tooltipText = "";
+						/*for (const [key, value] of Object.entries(feature.properties)) {
+							tooltipText += `${key}: ${value}<br>`
+						}*/
+						tooltipText += `SYNOP_raw: ${feature.properties['synop']}`
+						layer.bindTooltip(tooltipText);
+					}
+				}
+				// station-model-symbology:
+				window.testdata = L.stationModels(d, {
+					onEachFeature: tooltip,
+					field: "synop",
+					scaling: {
+						stationModel: 1,
+						font: 1
+					},
+					//polyChromatic: false,
+					//highCloudsInRed: false,
+					//elementsToOmit: [],	// e.g. [0, 2, 3, 17, 18]. Any, except 12 (center station circle).
+					debug: false,
+					attribution: 'Data source: Hungarian Meteorological Service through Ogimet'
+				}).addTo(map);
+
+				map.setView([47.3,19.3], 8);
+				
+			});
+
+			var infopanel = L.control({position: 'bottomright'});
+			infopanel.onAdd = function (map) {
+				var div = L.DomUtil.create('div', 'info');
+				div.innerHTML += 
+					'<div style="display: flex; flex-direction: column; max-width: 515px; text-align: center; row-gap: 8px">' +
+						'<div style="font-weight: bold">'+
+							'Surface Weather Observations for Hungary, 6 September 2025, 06 UTC'+
+						'</div>'+
+						'<div>'+
+							'Data source: Hungarian Meteorological Service through Ogimet'+
+						'</div>'+
+					'</div>';
+				return div;
+			}
+			infopanel.addTo(map);
+
+		</script>	
+	</body>
+</html>
