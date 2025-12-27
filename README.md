@@ -33,7 +33,7 @@ const layer = L.stationModels(data, {
     temperature: "raw",
     dewPoint: "raw",
     polyChromatic: true,
-    highCloudsinRed: true,
+    highCloudsInRed: true,
     elementsToOmit: []
 }).addTo(map);
 ```
@@ -42,13 +42,13 @@ const layer = L.stationModels(data, {
 - `field <string>`: target attribute field name containing the encoded SYNOP string.
 
 ### Additional options
-- `scaling <object>`: options for fine-tuning symbology size
-    - `stationModel <number>`: scaling for the final station model symbols, globally. (default: 1)
-    - `font <number>`: font scaling within the station model symbols, globally. (default: 1)
+- `scaling <object>`: global options for fine-tuning symbology scaling. These affect all symbols. Should be adjusted based on subjective needs based on feature density, map scale, map extent and intended level of detail to be plotted.
+    - `stationModel <number>`: scaling for the final station model symbols. (default: 1)
+    - `font <number>`: font scaling within the station model symbols. (default: 1)
 - `temperature <string>`: ['raw'|'rounded'] plotting method for the temperature value TTT: "raw" plots tenths, "rounded" rounds value to the nearest degree. (default: 'raw') 
 - `dewPoint <string>`: ['raw'|'rounded'] plotting method for the dew-point temperature value T<sub>d</sub>T<sub>d</sub>T<sub>d</sub>: "raw" plots tenths, "rounded" rounds value to the nearest degree. (default: 'raw') 
 - `polyChromatic <boolean>`: if true, the polychromatic plotting method is used. This currently means, that the past weather reported from a manned station (W<sub>1</sub>W<sub>2</sub>) is plotted red, and amount (PPP) and characteristic of pressure tendency (a) will be plotted red, if pressure is decreasing (a >= 5). Moreover, in this case, the amount of pressure tendency (PPP) omits the minus sign. (default: true) *Note: This is an experimental option, can be refined/omitted later.*
-- `highCloudsinRed <boolean>`: if true, C<sub>H</sub> symbol for high-altitude clouds is plotted in red. WMO-No. 306 optionally permits this. (default: true)
+- `highCloudsInRed <boolean>`: if true, C<sub>H</sub> symbol for high-altitude clouds is plotted in red. WMO-No. 306 optionally permits this. (default: true)
 - `elementsToOmit <array<integer>>`: an array of element cell numbers to omit from the final symbol, regardless of data availability. Cell 12 (central station circle / cloud cover / wind shaft / manner of station) can not be hidden. For the cell numbers, refer to the illustration below and page A-441 of WMO-No. 306. Example: [6, 10, 11] will hide temperature value (TTT), horizontal visibility code figure (VV) and present weather symbol (ww/w<sub>a</sub>w<sub>a</sub>). (default: [])
 
 ![Cell numbering illustration](slot_numbering.png)
