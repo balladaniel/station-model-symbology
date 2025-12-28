@@ -7,9 +7,9 @@ Dynamically generated, vector-based station model symbols for depicting weather 
 
 ## Demo
 Below you can find links to three example web maps, which employ the module to dynamically generate symbology from surface weather observations stored as an attribute within GeoJSON. Data attribution is included with the respective examples.
-- Europe (21 Sep 2025, 12 UTC): [./examples/example_EU_20250921_12UTC.html](https://balladaniel.github.io/station-model-symbology/examples/example_EU_20250921_12UTC.html)
-- Hungary (6 Sep 2025, 06 UTC): [./examples/example_HU_20250906_06UTC.html](https://balladaniel.github.io/station-model-symbology/examples/example_HU_20250906_06UTC.html)
-- Hungary (17 Dec 2025, 14 UTC): [./examples/example_HU_20251217_14UTC.html](https://balladaniel.github.io/station-model-symbology/examples/example_HU_20251217_14UTC.html)
+- [Europe (61 stations) - 21 Sep 2025, 12 UTC](https://balladaniel.github.io/station-model-symbology/examples/example_EU_20250921_12UTC.html)
+- [Hungary (26 stations) - 6 Sep 2025, 06 UTC](https://balladaniel.github.io/station-model-symbology/examples/example_HU_20250906_06UTC.html)
+- [Hungary (26 stations) - 17 Dec 2025, 14 UTC](https://balladaniel.github.io/station-model-symbology/examples/example_HU_20251217_14UTC.html)
 
 ## Installation and Usage example for Leaflet
 1. Have the following file structure in a common folder root:
