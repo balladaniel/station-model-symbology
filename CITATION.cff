@@ -22,7 +22,7 @@ identifiers:
     value: >-
       https://www.mdpi.com/2220-9964/15/4/150
 repository-code: 'https://github.com/balladaniel/station-model-symbology'
-title: From SYNOP to Station Model Symbols on Web Maps: Leveraging Web Technologies to Implement Standardized WMO Symbology for Synoptic Surface Weather Charts
+title: "From SYNOP to Station Model Symbols on Web Maps: Leveraging Web Technologies to Implement Standardized WMO Symbology for Synoptic Surface Weather Charts"
 version: 1.0.0
 url: https://www.mdpi.com/2220-9964/15/4/150
 doi: 10.3390/ijgi15040150
@@ -43,7 +43,7 @@ preferred-citation:
         Institute of Cartography and Geoinformatics, ELTE
         Eötvös Loránd University, 1117 Budapest, Hungary
       orcid: 'https://orcid.org/0000-0002-8639-2812'
-  title: From SYNOP to Station Model Symbols on Web Maps: Leveraging Web Technologies to Implement Standardized WMO Symbology for Synoptic Surface Weather Charts
+  title: "From SYNOP to Station Model Symbols on Web Maps: Leveraging Web Technologies to Implement Standardized WMO Symbology for Synoptic Surface Weather Charts"
   doi: 10.3390/ijgi15040150
   url: https://www.mdpi.com/2220-9964/15/4/150
   type: article
