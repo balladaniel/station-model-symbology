@@ -51,7 +51,7 @@ const layer = L.stationModels(data, {
 - `highCloudsInRed <boolean>`: if true, C<sub>H</sub> symbol for high-altitude clouds is plotted in red. WMO-No. 306 optionally permits this. (default: true)
 - `elementsToOmit <array<integer>>`: an array of element cell numbers to omit from the final symbol, regardless of data availability. Cell 12 (central station circle / cloud cover / wind shaft / manner of station) can not be hidden. For the cell numbers, refer to the illustration below and page A-441 of WMO-No. 306. Example: [6, 10, 11] will hide temperature value (TTT), horizontal visibility code figure (VV) and present weather symbol (ww/w<sub>a</sub>w<sub>a</sub>). (default: [])
 
-![Cell numbering illustration](slot_numbering.png)
+![Cell numbering illustration, in reference to the WMO representation](slot_numbering.png)
 
 ## Components
 Source code is structured as follows:
@@ -60,3 +60,8 @@ Source code is structured as follows:
 - `wrapper_Leaflet.js` - An example for a wrapper, written for Leaflet. Extends L.geoJSON. Tested with Leaflet v1.9.4. (In the future, creating wrappers for other web mapping libraries is planned.)
 
 Since the main module receives the encoded SYNOP data and outputs an assembled, final SVG symbol for a SYNOP message, the module itself (`main.js` + `main_worker.js`) can be implemented in any software architecture that expects SVG symbols. The module was developed with the intention of using the symbols on Leaflet- and OpenLayers-based web maps. The bundle file is compiled with [Rollup](https://github.com/rollup/rollup), targeting the given wrapper as the entry point, resulting in a single file ready to be used with the given web mapping library. Alternatively, by changing the input of the Rollup config from the wrapper to `main.js`, you can have a single file for the module itself, that can be implemented in other workflows, not just for symbology on web maps.
+
+## How to cite
+If you use the module itself or output produced by the module in connection with a scientific publication, please refer to: 
+
+**Balla, D. and Gede, M.: From SYNOP to Station Model Symbols on Web Maps: Leveraging Web Technologies to Implement Standardized WMO Symbology for Synoptic Surface Weather Charts, ISPRS International Journal of Geo-Information, 15(4), 150, https://doi.org/10.3390/ijgi15040150, 2026.**
