@@ -31,6 +31,7 @@ Below you can find links to three example web maps, which employ the module to d
 3. In your script, provide a parsed GeoJSON as "data", like you would with an ordinary L.geoJSON layer in Leaflet or with a GeoJSON VectorSource in OpenLayers. The required option `field` must be defined, indicating the attribute field name in the GeoJSON that contains encoded SYNOP strings:
 ``` javascript
 // data = parsed GeoJSON
+// Leaflet:
 const layer = L.stationModels(data, {
     field: "synop", // required
     scaling: {
@@ -46,6 +47,26 @@ const layer = L.stationModels(data, {
     elementsToOmit: [],
     attribution: "Source Meteorological Service"
 }).addTo(map);
+```
+``` javascript
+// data = parsed GeoJSON
+// OpenLayers:
+const layer = ol.stationModels(data, {
+    field: "synop", // required
+    scaling: {
+        stationModel: 1,
+        font: 1
+    },
+    temperature: "raw",
+    dewPoint: "raw",
+    polyChromatic: true,
+    highCloudsInRed: true,
+    fontFamily: "Arial, Open Sans, Roboto",
+    fontWeight: "normal",
+    elementsToOmit: [],
+    attribution: 'Source Meteorological Service'
+})
+map.addLayer(layer);
 ```
 
 ### Required options
