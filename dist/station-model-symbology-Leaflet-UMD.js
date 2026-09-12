@@ -60,7 +60,7 @@
         return createBase64WorkerFactory$1(base64);
     }
 
-    var WorkerFactory = /*#__PURE__*/createBase64WorkerFactory('Lyogcm9sbHVwLXBsdWdpbi13ZWItd29ya2VyLWxvYWRlciAqLwooZnVuY3Rpb24gKCkgewogICAgJ3VzZSBzdHJpY3QnOwoKICAgIC8qKg0KICAgICAqIHN0YXRpb24tbW9kZWwtc3ltYm9sb2d5OiBtYWluX3dvcmtlci5qcw0KICAgICAqIA0KICAgICAqIERlY29kZXMgU1lOT1AgcmVwb3J0cyB3aXRoIFB5dGhvbiBtb2R1bGUgcHltZXRkZWNvZGVyLCB3aXRoaW4gUHlvZGlkZS4gUmVxdWlyZXMgInB5bWV0ZGVjb2Rlci56aXAiIGluIHRoZSBzYW1lIGZvbGRlcg0KICAgICAqLw0KDQogICAgY29uc29sZS5sb2coJ1dFQiBXT1JLRVIgSU5JVElBTElaSU5HIChiZWZvcmUgcmVjZWl2aW5nIGFueSBtZXNzYWdlKScpOw0KDQogICAgaW1wb3J0U2NyaXB0cygiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L3B5b2RpZGUvdjAuMjkuMC9mdWxsL3B5b2RpZGUuanMiKTsgLy8gcHlvZGlkZSBmcm9tIENETg0KICAgIC8vaW1wb3J0U2NyaXB0cygiLi9weW9kaWRlLmpzIikgLy8gcHlvZGlkZSBsb2NhbGx5DQoNCiAgICB2YXIgbWVzc2FnZVF1ZXVlID0gW107DQogICAgbGV0IHB5b2RpZGVTdGFydGluZyA9IGZhbHNlOw0KICAgIGxldCBwcm9jZXNzUXVldWVJc1J1bm5pbmcgPSBmYWxzZTsNCiAgICB2YXIgY3R4Ow0KICAgIGxldCBzdGFydFRpbWVQeW9kaWRlU3RhcnR1cCwgZW5kVGltZVB5b2RpZGVTdGFydHVwOw0KICAgIGxldCBzdGFydFRpbWVQeW9kaWRlSW1wb3J0LCBlbmRUaW1lUHlvZGlkZUltcG9ydDsNCiAgICB2YXIgYmFzZTsNCiAgICB2YXIgYWJzb2x1dGU7DQoNCiAgICBhc3luYyBmdW5jdGlvbiBzdGFydFB5b2RpZGUoKSB7DQogICAgICAgIGNvbnNvbGUubG9nKCdXT1JLRVI6IFB5b2RpZGUgaXMgbm90IHJ1bm5pbmcsIHN0YXJ0aW5nIHVwLi4uJyk7DQogICAgICAgIC8vIExvYWQgUHlvZGlkZQ0KICAgICAgICBzdGFydFRpbWVQeW9kaWRlU3RhcnR1cCA9IHBlcmZvcm1hbmNlLm5vdygpOw0KICAgICAgICBweW9kaWRlU3RhcnRpbmcgPSB0cnVlOw0KICAgICAgICB2YXIgcHlvZGlkZSA9IGF3YWl0IGxvYWRQeW9kaWRlKHtmdWxsU3RkTGliOiBmYWxzZX0pOw0KICAgICAgICBjb25zb2xlLmxvZyhgV09SS0VSOiBQeW9kaWRlIHZlcnNpb24gJHtweW9kaWRlLnZlcnNpb259IHN0YXJ0ZWQuYCk7DQogICAgICAgIGVuZFRpbWVQeW9kaWRlU3RhcnR1cCA9IHBlcmZvcm1hbmNlLm5vdygpOw0KDQogICAgICAgIC8vIGdldCwgdGhlbiBpbXBvcnQgcHltZXRkZWNvZGVyIGxpYiBpbiBQeW9kaWRlIGVudg0KICAgICAgICBzdGFydFRpbWVQeW9kaWRlSW1wb3J0ID0gcGVyZm9ybWFuY2Uubm93KCk7DQogICAgICAgIGxldCByZXNwb25zZSA9IGF3YWl0IGZldGNoKGFic29sdXRlKTsgLy8gLnppcCwgLndobCwgLi4uDQogICAgICAgIC8vbGV0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2goIi4vcHltZXRkZWNvZGVyLnppcCIpOyAvLyAuemlwLCAud2hsLCAuLi4NCiAgICAgICAgbGV0IGJ1ZmZlciA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7DQogICAgICAgIGF3YWl0IHB5b2RpZGUudW5wYWNrQXJjaGl2ZShidWZmZXIsICJ6aXAiKTsgLy8gYnkgZGVmYXVsdCwgdW5wYWNrcyB0byB0aGUgY3VycmVudCBkaXINCiAgICAgICAgcHlvZGlkZS5weWltcG9ydCgicHltZXRkZWNvZGVyIik7DQogICAgICAgIGVuZFRpbWVQeW9kaWRlSW1wb3J0ID0gcGVyZm9ybWFuY2Uubm93KCk7DQoNCiAgICAgICAgY29uc29sZS5sb2coJ1dPUktFUjogUHltZXRkZWNvZGVyIGltcG9ydGVkLCBzdGFydGluZyBwcm9jZXNzaW5nIFF1ZXVlJyk7DQogICAgICAgIHB5b2RpZGVTdGFydGluZyA9IGZhbHNlOw0KDQogICAgICAgIGNvbnNvbGUudGFibGUoew0KICAgICAgICAgICAgJ1B5b2RpZGUgc3RhcnR1cCc6IE1hdGgucm91bmQoZW5kVGltZVB5b2RpZGVTdGFydHVwIC0gc3RhcnRUaW1lUHlvZGlkZVN0YXJ0dXApLA0KICAgICAgICAgICAgJ0ltcG9ydCBweW1ldGRlY29kZXInOiBNYXRoLnJvdW5kKGVuZFRpbWVQeW9kaWRlSW1wb3J0IC0gc3RhcnRUaW1lUHlvZGlkZUltcG9ydCksDQogICAgICAgIH0pOw0KDQogICAgICAgIHJldHVybiBweW9kaWRlOw0KICAgIH0NCg0KDQoNCiAgICBmdW5jdGlvbiBkZWNvZGVTeW5vcChlbmNvZGVkKSB7DQoNCiAgICAgICAgY29uc29sZS5kZWJ1ZygnZGVjb2RlU3lub3Agc3RhcnRpbmcgdG8gcHJvY2VzczonLCBlbmNvZGVkKTsNCg0KICAgICAgICBjb25zdCBkYXRhVG9QYXNzID0gew0KICAgICAgICAgICAgc3lub3BTdHJpbmc6IGVuY29kZWQuU1lOT1BfcmF3DQogICAgICAgIH07DQogICAgICAgIA0KICAgICAgICAvLyBnZXQgZGljdCBhbmQgaW5zZXJ0IG91ciBpbnB1dCBkYXRhIHRvIHBhc3MgdG8gUHl0aG9uIGVudg0KICAgICAgICBjb25zdCBkaWN0ID0gY3R4Lmdsb2JhbHMuZ2V0KCJkaWN0Iik7DQogICAgICAgIGNvbnN0IGdsb2JhbHMgPSBkaWN0KE9iamVjdC5lbnRyaWVzKGRhdGFUb1Bhc3MpKTsNCiAgICAgICAgZGljdC5kZXN0cm95KCk7ICAvLyBhdm9pZGluZyBtZW1vcnkgbGVha3MuIFNlZTogaHR0cHM6Ly9weW9kaWRlLm9yZy9lbi9zdGFibGUvdXNhZ2UvdHlwZS1jb252ZXJzaW9ucy5odG1sI3Byb3h5aW5nLWZyb20tcHl0aG9uLWludG8tamF2YXNjcmlwdA0KDQogICAgICAgIGNvbnN0IHN0YXJ0VGltZVN5bm9wID0gcGVyZm9ybWFuY2Uubm93KCk7DQogICAgICAgIC8vIHJ1biBweXRob24gY29kZToNCiAgICAgICAgdmFyIGRlY29kZWQgPSBjdHgucnVuUHl0aG9uKGAgICAgICAgDQogICAgICAgIGltcG9ydCBqc29uDQogICAgICAgIGZyb20gcHltZXRkZWNvZGVyIGltcG9ydCBzeW5vcCBhcyBzIA0KICAgICAgICBkZWNvZGVkID0gcy5TWU5PUCgpLmRlY29kZShzeW5vcFN0cmluZykNCiAgICAgICAganNvbi5kdW1wcyhkZWNvZGVkKQ0KICAgIGAsIHtnbG9iYWxzfSk7DQoNCiAgICAgICAgY29uc3QgZW5kVGltZVN5bm9wID0gcGVyZm9ybWFuY2Uubm93KCk7DQoNCiAgICAgICAgLy8gcGFyc2UgZGVjb2RlZCBkYXRhIHRvIEpTT04NCiAgICAgICAgdmFyIHBhcnNlZCA9IEpTT04ucGFyc2UoZGVjb2RlZCk7DQogICAgICAgIHBhcnNlZFsnX3JhdyddID0gZW5jb2RlZC5TWU5PUF9yYXc7IC8vIGluY2x1ZGUgcmF3IGVuY29kZWQgU1lOT1Agc3RyaW5nIGZvciBkZWJ1ZyBwdXJwb3Nlcw0KDQogICAgICAgIGNvbnNvbGUuZGVidWcoIldPUktFUjogUG9zdGluZyBtZXNzYWdlIGJhY2sgdG8gbWFpbiBzY3JpcHQiKTsNCiAgICAgICAgLy8gc2VuZCBkZWNvZGVkIFNZTk9QIGRhdGEgb3V0IG9mIHdvcmtlciB0byB0aGUgTWFpbiBjb2RlIHRocmVhZA0KICAgICAgICBwb3N0TWVzc2FnZSh7ZGVjb2RlZDogcGFyc2VkLCBsZWFmbGV0SUQ6IGVuY29kZWQubGVhZmxldElEfSk7DQogICAgICAgIHBlcmZvcm1hbmNlLm5vdygpOw0KDQogICAgICAgIC8vY29uc29sZS5kZWJ1ZyhgV09SS0VSOiBmaW5pc2hlZCB3b3JraW5nLiBUb29rICR7TWF0aC5yb3VuZChlbmRUaW1lV29ya2VyIC0gc3RhcnRUaW1lV29ya2VyKX0gbXMgdG90YWwsIG9mIHdoaWNoOmApDQogICAgIA0KICAgICAgICBjb25zb2xlLmRlYnVnKCdUaGlzIFN5bm9wIGRlY29kaW5nIHRvb2sgKG1zKScsIE1hdGgucm91bmQoZW5kVGltZVN5bm9wIC0gc3RhcnRUaW1lU3lub3ApKTsNCiAgICB9DQoNCiAgICBmdW5jdGlvbiBwcm9jZXNzUXVldWUoKXsNCiAgICAgICAgcHJvY2Vzc1F1ZXVlSXNSdW5uaW5nID0gdHJ1ZTsNCiAgICAgICAgd2hpbGUgKG1lc3NhZ2VRdWV1ZS5sZW5ndGggPiAwKSB7DQogICAgICAgICAgICBkZWNvZGVTeW5vcChtZXNzYWdlUXVldWUuc2hpZnQoKSk7DQogICAgICAgIH0NCiAgICAgICAgY29uc29sZS5sb2coJ1dPUktFUjogUXVldWUgcHJvY2Vzc2luZyBmaW5pc2hlZCwgcXVldWUgaXMgbm93IGVtcHR5LicpOw0KICAgICAgICBwcm9jZXNzUXVldWVJc1J1bm5pbmcgPSBmYWxzZTsNCiAgICB9DQoNCiAgICBmdW5jdGlvbiBoYW5kbGVNZXNzYWdlKGUpeyAgDQogICAgICAgIGNvbnNvbGUubG9nKCJXT1JLRVI6IE1lc3NhZ2UgcmVjZWl2ZWQgZnJvbSBtYWluIHNjcmlwdCwgd2l0aCBkYXRhOiIsIGUuZGF0YSk7DQoNCiAgICAgICAgcGVyZm9ybWFuY2Uubm93KCk7DQoNCiAgICAgICAgaWYgKGUuZGF0YS5TWU5PUF9yYXcgPT0gbnVsbCkgew0KICAgICAgICAgICAgLy8gYXR0cmliIFNZTk9QX3JhdyBpcyBudWxsIGluIGZlYXR1cmUgYXR0cmlidXRlcywgZG9udCBwcm9jZXNzDQogICAgICAgICAgICBwb3N0TWVzc2FnZSh7ZGVjb2RlZDogbnVsbCwgbGVhZmxldElEOiBlLmRhdGEubGVhZmxldElEfSk7DQogICAgICAgIH0gZWxzZSB7DQogICAgICAgICAgICAvLyBjaGVjayBpZiBweW9kaWRlIGlzIHN0aWxsIHN0YXJ0aW5nIHdoZW4gdGhlIG1lc3NhZ2UgaXMgcmVjZWl2ZWQuIElmIHNvLCBwdXQgaW4gcXVldWUuDQogICAgICAgICAgICBpZiAocHlvZGlkZVN0YXJ0aW5nKSB7DQogICAgICAgICAgICAgICAgY29uc29sZS5sb2coJ1dPUktFUjogUHlvZGlkZSBzdGlsbCBzdGFydGluZyEgTWVzc2FnZS9kYXRhIHB1dCBpbnRvIHF1ZXVlLicpOw0KICAgICAgICAgICAgICAgIG1lc3NhZ2VRdWV1ZS5wdXNoKGUuZGF0YSk7DQogICAgICAgICAgICAgICAgLy9jb25zb2xlLmxvZyhtZXNzYWdlUXVldWUpDQogICAgICAgICAgICB9IGVsc2Ugew0KICAgICAgICAgICAgLy8gcHlvZGlkZSBpcyBydW5uaW5nLCBwdXQgbXNnIGluIHF1ZXVlLiBJZiBwcm9jZXNzaW5nIHRoZSBxdWV1ZSBpcyBub3QgcnVubmluZywgc3RhcnQuDQogICAgICAgICAgICAgICAgbWVzc2FnZVF1ZXVlLnB1c2goZS5kYXRhKTsNCiAgICAgICAgICAgICAgICBpZiAoIXByb2Nlc3NRdWV1ZUlzUnVubmluZykgew0KICAgICAgICAgICAgICAgICAgICBwcm9jZXNzUXVldWUoKTsNCiAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICB9DQogICAgICAgIH0NCg0KICAgIH0NCg0KICAgIG9ubWVzc2FnZSA9IChlKSA9PiB7DQogICAgICAgIGlmIChlLmRhdGEuaGFzT3duUHJvcGVydHkoJ1NZTk9QX3JhdycpKSB7DQogICAgICAgICAgICBoYW5kbGVNZXNzYWdlKGUpOw0KICAgICAgICB9IGVsc2Ugew0KICAgICAgICANCiAgICAgICAgICAgIC8vIHRvIGhhdmUgY3VycmVudCBiYXNlVVJJOiBodHRwczovL3N0YWNrb3ZlcmZsb3cuY29tL2EvNDAxOTI5Nw0KICAgICAgICAgICAgYmFzZSA9IGUuZGF0YTsNCiAgICAgICAgICAgIGFic29sdXRlID0gbmV3IFVSTCggIi4vcHltZXRkZWNvZGVyLnppcCIsIGJhc2UgKTsgICAvL3B5bWV0ZGVjb2Rlci56aXAgc2hvdWxkIGFsc28gYmUgc3VwcGxpZWQuIEFsd2F5cyBpbiB0aGUgc2FtZSBmb2xkZXIsIGFzIHRoZSBtYWluIEpTIGZpbGUgKGJ1bmRsZSBvciBub3QpDQogICAgICAgICAgICBjb25zb2xlLmxvZygnYmFzZSAnLCBiYXNlLCBhYnNvbHV0ZSk7DQoNCiAgICAgICAgICAgIHN0YXJ0UHlvZGlkZSgpLnRoZW4ocHlvZGlkZSA9PiB7DQogICAgICAgICAgICAgICAgY3R4ID0gcHlvZGlkZTsNCiAgICAgICAgICAgICAgICBpZiAobWVzc2FnZVF1ZXVlLmxlbmd0aCA+IDApIHsNCiAgICAgICAgICAgICAgICAgICAgcHJvY2Vzc1F1ZXVlKCk7DQogICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgfSk7DQogICAgICAgIH0NCiAgICB9OwoKfSkoKTsKLy8jIHNvdXJjZU1hcHBpbmdVUkw9bWFpbl93b3JrZXIuanMubWFwCgo=');
+    var WorkerFactory = /*#__PURE__*/createBase64WorkerFactory('Lyogcm9sbHVwLXBsdWdpbi13ZWItd29ya2VyLWxvYWRlciAqLwooZnVuY3Rpb24gKCkgewogICAgJ3VzZSBzdHJpY3QnOwoKICAgIC8qKg0KICAgICAqIHN0YXRpb24tbW9kZWwtc3ltYm9sb2d5OiBtYWluX3dvcmtlci5qcw0KICAgICAqIA0KICAgICAqIERlY29kZXMgU1lOT1AgcmVwb3J0cyB3aXRoIFB5dGhvbiBtb2R1bGUgcHltZXRkZWNvZGVyLCB3aXRoaW4gUHlvZGlkZS4gUmVxdWlyZXMgInB5bWV0ZGVjb2Rlci56aXAiIGluIHRoZSBzYW1lIGZvbGRlcg0KICAgICAqLw0KDQogICAgY29uc29sZS5kZWJ1ZygnV0VCIFdPUktFUiBJTklUSUFMSVpJTkcgKGJlZm9yZSByZWNlaXZpbmcgYW55IG1lc3NhZ2UpJyk7DQoNCiAgICBpbXBvcnRTY3JpcHRzKCJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvcHlvZGlkZS92MC4yOS4wL2Z1bGwvcHlvZGlkZS5qcyIpOyAvLyBweW9kaWRlIGZyb20gQ0RODQogICAgLy9pbXBvcnRTY3JpcHRzKCIuL3B5b2RpZGUuanMiKSAvLyBweW9kaWRlIGxvY2FsbHkNCg0KICAgIHZhciBtZXNzYWdlUXVldWUgPSBbXTsNCiAgICBsZXQgcHlvZGlkZVN0YXJ0aW5nID0gZmFsc2U7DQogICAgbGV0IHByb2Nlc3NRdWV1ZUlzUnVubmluZyA9IGZhbHNlOw0KICAgIHZhciBjdHg7DQogICAgbGV0IHN0YXJ0VGltZVB5b2RpZGVTdGFydHVwLCBlbmRUaW1lUHlvZGlkZVN0YXJ0dXA7DQogICAgbGV0IHN0YXJ0VGltZVB5b2RpZGVJbXBvcnQsIGVuZFRpbWVQeW9kaWRlSW1wb3J0Ow0KICAgIHZhciBiYXNlOw0KICAgIHZhciBhYnNvbHV0ZTsNCg0KICAgIGFzeW5jIGZ1bmN0aW9uIHN0YXJ0UHlvZGlkZSgpIHsNCiAgICAgICAgY29uc29sZS5kZWJ1ZygnV09SS0VSOiBQeW9kaWRlIGlzIG5vdCBydW5uaW5nLCBzdGFydGluZyB1cC4uLicpOw0KICAgICAgICAvLyBMb2FkIFB5b2RpZGUNCiAgICAgICAgc3RhcnRUaW1lUHlvZGlkZVN0YXJ0dXAgPSBwZXJmb3JtYW5jZS5ub3coKTsNCiAgICAgICAgcHlvZGlkZVN0YXJ0aW5nID0gdHJ1ZTsNCiAgICAgICAgdmFyIHB5b2RpZGUgPSBhd2FpdCBsb2FkUHlvZGlkZSh7ZnVsbFN0ZExpYjogZmFsc2V9KTsNCiAgICAgICAgY29uc29sZS5kZWJ1ZyhgV09SS0VSOiBQeW9kaWRlIHZlcnNpb24gJHtweW9kaWRlLnZlcnNpb259IHN0YXJ0ZWQuYCk7DQogICAgICAgIGVuZFRpbWVQeW9kaWRlU3RhcnR1cCA9IHBlcmZvcm1hbmNlLm5vdygpOw0KDQogICAgICAgIC8vIGdldCwgdGhlbiBpbXBvcnQgcHltZXRkZWNvZGVyIGxpYiBpbiBQeW9kaWRlIGVudg0KICAgICAgICBzdGFydFRpbWVQeW9kaWRlSW1wb3J0ID0gcGVyZm9ybWFuY2Uubm93KCk7DQogICAgICAgIGxldCByZXNwb25zZSA9IGF3YWl0IGZldGNoKGFic29sdXRlKTsgLy8gLnppcCwgLndobCwgLi4uDQogICAgICAgIC8vbGV0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2goIi4vcHltZXRkZWNvZGVyLnppcCIpOyAvLyAuemlwLCAud2hsLCAuLi4NCiAgICAgICAgbGV0IGJ1ZmZlciA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7DQogICAgICAgIGF3YWl0IHB5b2RpZGUudW5wYWNrQXJjaGl2ZShidWZmZXIsICJ6aXAiKTsgLy8gYnkgZGVmYXVsdCwgdW5wYWNrcyB0byB0aGUgY3VycmVudCBkaXINCiAgICAgICAgcHlvZGlkZS5weWltcG9ydCgicHltZXRkZWNvZGVyIik7DQogICAgICAgIGVuZFRpbWVQeW9kaWRlSW1wb3J0ID0gcGVyZm9ybWFuY2Uubm93KCk7DQoNCiAgICAgICAgY29uc29sZS5kZWJ1ZygnV09SS0VSOiBQeW1ldGRlY29kZXIgaW1wb3J0ZWQsIHN0YXJ0aW5nIHByb2Nlc3NpbmcgUXVldWUnKTsNCiAgICAgICAgcHlvZGlkZVN0YXJ0aW5nID0gZmFsc2U7DQoNCiAgICAgICAgY29uc29sZS50YWJsZSh7DQogICAgICAgICAgICAnUHlvZGlkZSBzdGFydHVwJzogTWF0aC5yb3VuZChlbmRUaW1lUHlvZGlkZVN0YXJ0dXAgLSBzdGFydFRpbWVQeW9kaWRlU3RhcnR1cCksDQogICAgICAgICAgICAnSW1wb3J0IHB5bWV0ZGVjb2Rlcic6IE1hdGgucm91bmQoZW5kVGltZVB5b2RpZGVJbXBvcnQgLSBzdGFydFRpbWVQeW9kaWRlSW1wb3J0KSwNCiAgICAgICAgfSk7DQoNCiAgICAgICAgcmV0dXJuIHB5b2RpZGU7DQogICAgfQ0KDQoNCg0KICAgIGZ1bmN0aW9uIGRlY29kZVN5bm9wKGVuY29kZWQpIHsNCg0KICAgICAgICBjb25zb2xlLmRlYnVnKGBXT1JLRVIgLyBmZWF0dXJlIElEICR7ZW5jb2RlZC5sZWFmbGV0SUR9OiBkZWNvZGVTeW5vcCBzdGFydGluZyB0byBwcm9jZXNzOmAsIGVuY29kZWQpOw0KDQogICAgICAgIGNvbnN0IGRhdGFUb1Bhc3MgPSB7DQogICAgICAgICAgICBzeW5vcFN0cmluZzogZW5jb2RlZC5TWU5PUF9yYXcNCiAgICAgICAgfTsNCiAgICAgICAgDQogICAgICAgIC8vIGdldCBkaWN0IGFuZCBpbnNlcnQgb3VyIGlucHV0IGRhdGEgdG8gcGFzcyB0byBQeXRob24gZW52DQogICAgICAgIGNvbnN0IGRpY3QgPSBjdHguZ2xvYmFscy5nZXQoImRpY3QiKTsNCiAgICAgICAgY29uc3QgZ2xvYmFscyA9IGRpY3QoT2JqZWN0LmVudHJpZXMoZGF0YVRvUGFzcykpOw0KICAgICAgICBkaWN0LmRlc3Ryb3koKTsgIC8vIGF2b2lkaW5nIG1lbW9yeSBsZWFrcy4gU2VlOiBodHRwczovL3B5b2RpZGUub3JnL2VuL3N0YWJsZS91c2FnZS90eXBlLWNvbnZlcnNpb25zLmh0bWwjcHJveHlpbmctZnJvbS1weXRob24taW50by1qYXZhc2NyaXB0DQoNCiAgICAgICAgY29uc3Qgc3RhcnRUaW1lU3lub3AgPSBwZXJmb3JtYW5jZS5ub3coKTsNCiAgICAgICAgLy8gcnVuIHB5dGhvbiBjb2RlOg0KICAgICAgICB2YXIgZGVjb2RlZCA9IGN0eC5ydW5QeXRob24oYCAgICAgICANCiAgICAgICAgaW1wb3J0IGpzb24NCiAgICAgICAgZnJvbSBweW1ldGRlY29kZXIgaW1wb3J0IHN5bm9wIGFzIHMgDQogICAgICAgIGRlY29kZWQgPSBzLlNZTk9QKCkuZGVjb2RlKHN5bm9wU3RyaW5nKQ0KICAgICAgICBqc29uLmR1bXBzKGRlY29kZWQpDQogICAgYCwge2dsb2JhbHN9KTsNCg0KICAgICAgICBjb25zdCBlbmRUaW1lU3lub3AgPSBwZXJmb3JtYW5jZS5ub3coKTsNCg0KICAgICAgICAvLyBwYXJzZSBkZWNvZGVkIGRhdGEgdG8gSlNPTg0KICAgICAgICB2YXIgcGFyc2VkID0gSlNPTi5wYXJzZShkZWNvZGVkKTsNCiAgICAgICAgcGFyc2VkWydfcmF3J10gPSBlbmNvZGVkLlNZTk9QX3JhdzsgLy8gaW5jbHVkZSByYXcgZW5jb2RlZCBTWU5PUCBzdHJpbmcgZm9yIGRlYnVnIHB1cnBvc2VzDQoNCiAgICAgICAgY29uc29sZS5kZWJ1ZyhgV09SS0VSIC8gZmVhdHVyZSBJRCAke2VuY29kZWQubGVhZmxldElEfTogUG9zdGluZyBtZXNzYWdlIGJhY2sgdG8gbWFpbiBzY3JpcHRgKTsNCiAgICAgICAgLy8gc2VuZCBkZWNvZGVkIFNZTk9QIGRhdGEgb3V0IG9mIHdvcmtlciB0byB0aGUgTWFpbiBjb2RlIHRocmVhZA0KICAgICAgICBwb3N0TWVzc2FnZSh7ZGVjb2RlZDogcGFyc2VkLCBsZWFmbGV0SUQ6IGVuY29kZWQubGVhZmxldElEfSk7DQogICAgICAgIHBlcmZvcm1hbmNlLm5vdygpOw0KDQogICAgICAgIC8vY29uc29sZS5kZWJ1ZyhgV09SS0VSOiBmaW5pc2hlZCB3b3JraW5nLiBUb29rICR7TWF0aC5yb3VuZChlbmRUaW1lV29ya2VyIC0gc3RhcnRUaW1lV29ya2VyKX0gbXMgdG90YWwsIG9mIHdoaWNoOmApDQogICAgIA0KICAgICAgICBjb25zb2xlLmRlYnVnKGBXT1JLRVIgLyBmZWF0dXJlIElEICR7ZW5jb2RlZC5sZWFmbGV0SUR9OiBUaGlzIFN5bm9wIGRlY29kaW5nIHRvb2sgJHtNYXRoLnJvdW5kKGVuZFRpbWVTeW5vcCAtIHN0YXJ0VGltZVN5bm9wKX0gbXMuYCk7DQogICAgfQ0KDQogICAgZnVuY3Rpb24gcHJvY2Vzc1F1ZXVlKCl7DQogICAgICAgIHByb2Nlc3NRdWV1ZUlzUnVubmluZyA9IHRydWU7DQogICAgICAgIHdoaWxlIChtZXNzYWdlUXVldWUubGVuZ3RoID4gMCkgew0KICAgICAgICAgICAgZGVjb2RlU3lub3AobWVzc2FnZVF1ZXVlLnNoaWZ0KCkpOw0KICAgICAgICB9DQogICAgICAgIGNvbnNvbGUuZGVidWcoJ1dPUktFUjogUXVldWUgcHJvY2Vzc2luZyBmaW5pc2hlZCwgcXVldWUgaXMgbm93IGVtcHR5LicpOw0KICAgICAgICBwcm9jZXNzUXVldWVJc1J1bm5pbmcgPSBmYWxzZTsNCiAgICB9DQoNCiAgICBmdW5jdGlvbiBoYW5kbGVNZXNzYWdlKGUpeyAgDQogICAgICAgIGNvbnNvbGUuZGVidWcoIldPUktFUjogTWVzc2FnZSByZWNlaXZlZCBmcm9tIG1haW4gc2NyaXB0LCB3aXRoIGRhdGE6IiwgZS5kYXRhKTsNCg0KICAgICAgICBwZXJmb3JtYW5jZS5ub3coKTsNCg0KICAgICAgICBpZiAoZS5kYXRhLlNZTk9QX3JhdyA9PSBudWxsKSB7DQogICAgICAgICAgICAvLyBhdHRyaWIgU1lOT1BfcmF3IGlzIG51bGwgaW4gZmVhdHVyZSBhdHRyaWJ1dGVzLCBkb250IHByb2Nlc3MNCiAgICAgICAgICAgIHBvc3RNZXNzYWdlKHtkZWNvZGVkOiBudWxsLCBsZWFmbGV0SUQ6IGUuZGF0YS5sZWFmbGV0SUR9KTsNCiAgICAgICAgfSBlbHNlIHsNCiAgICAgICAgICAgIC8vIGNoZWNrIGlmIHB5b2RpZGUgaXMgc3RpbGwgc3RhcnRpbmcgd2hlbiB0aGUgbWVzc2FnZSBpcyByZWNlaXZlZC4gSWYgc28sIHB1dCBpbiBxdWV1ZS4NCiAgICAgICAgICAgIGlmIChweW9kaWRlU3RhcnRpbmcpIHsNCiAgICAgICAgICAgICAgICBjb25zb2xlLmRlYnVnKCdXT1JLRVI6IFB5b2RpZGUgc3RpbGwgc3RhcnRpbmchIE1lc3NhZ2UvZGF0YSBwdXQgaW50byBxdWV1ZS4nKTsNCiAgICAgICAgICAgICAgICBtZXNzYWdlUXVldWUucHVzaChlLmRhdGEpOw0KICAgICAgICAgICAgICAgIC8vY29uc29sZS5kZWJ1ZyhtZXNzYWdlUXVldWUpDQogICAgICAgICAgICB9IGVsc2Ugew0KICAgICAgICAgICAgLy8gcHlvZGlkZSBpcyBydW5uaW5nLCBwdXQgbXNnIGluIHF1ZXVlLiBJZiBwcm9jZXNzaW5nIHRoZSBxdWV1ZSBpcyBub3QgcnVubmluZywgc3RhcnQuDQogICAgICAgICAgICAgICAgbWVzc2FnZVF1ZXVlLnB1c2goZS5kYXRhKTsNCiAgICAgICAgICAgICAgICBpZiAoIXByb2Nlc3NRdWV1ZUlzUnVubmluZykgew0KICAgICAgICAgICAgICAgICAgICBwcm9jZXNzUXVldWUoKTsNCiAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICB9DQogICAgICAgIH0NCg0KICAgIH0NCg0KICAgIG9ubWVzc2FnZSA9IChlKSA9PiB7DQogICAgICAgIGlmIChlLmRhdGEuaGFzT3duUHJvcGVydHkoJ1NZTk9QX3JhdycpKSB7DQogICAgICAgICAgICBoYW5kbGVNZXNzYWdlKGUpOw0KICAgICAgICB9IGVsc2Ugew0KICAgICAgICANCiAgICAgICAgICAgIC8vIHRvIGhhdmUgY3VycmVudCBiYXNlVVJJOiBodHRwczovL3N0YWNrb3ZlcmZsb3cuY29tL2EvNDAxOTI5Nw0KICAgICAgICAgICAgYmFzZSA9IGUuZGF0YTsNCiAgICAgICAgICAgIGFic29sdXRlID0gbmV3IFVSTCggIi4vcHltZXRkZWNvZGVyLnppcCIsIGJhc2UgKTsgICAvL3B5bWV0ZGVjb2Rlci56aXAgc2hvdWxkIGFsc28gYmUgc3VwcGxpZWQuIEFsd2F5cyBpbiB0aGUgc2FtZSBmb2xkZXIsIGFzIHRoZSBtYWluIEpTIGZpbGUgKGJ1bmRsZSBvciBub3QpDQogICAgICAgICAgICBjb25zb2xlLmRlYnVnKCdiYXNlICcsIGJhc2UsIGFic29sdXRlKTsNCg0KICAgICAgICAgICAgc3RhcnRQeW9kaWRlKCkudGhlbihweW9kaWRlID0+IHsNCiAgICAgICAgICAgICAgICBjdHggPSBweW9kaWRlOw0KICAgICAgICAgICAgICAgIGlmIChtZXNzYWdlUXVldWUubGVuZ3RoID4gMCkgew0KICAgICAgICAgICAgICAgICAgICBwcm9jZXNzUXVldWUoKTsNCiAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICB9KTsNCiAgICAgICAgfQ0KICAgIH07Cgp9KSgpOwovLyMgc291cmNlTWFwcGluZ1VSTD1tYWluX3dvcmtlci5qcy5tYXAKCg==');
     /* eslint-enable */
 
     /**
@@ -190,15 +190,19 @@
                 stationModel: 1,
                 font: 1
             },
-            polyChromatic: true,
-            highCloudsInRed: true,
             temperature: "raw",
             dewPoint: "raw",
+            polyChromatic: true,
+            highCloudsInRed: true,
+            fontFamily: "Arial",
+            fontWeight: "normal",
             elementsToOmit: [],	// e.g. [0, 2, 3, 17, 18]. Any, except 12 (center station circle).
             debug: false
         };
         var appliedOptions = Object.assign(defaultOptions, userOptions);    // override default options with user-defined ones, if any
         var options = appliedOptions;
+
+        (options.fontFamily instanceof Array && options.fontFamily.length==0 ? console.warn("For option `fontFamily` you defined an empty array. Falling back to the OS default font. The option accepts either a single string of fallback font families or an array with one or more string items for the font family names.") : "");
 
         // should have 5x5 + 1 (= 26) slots for the whole surface plotting model structure. Content should be a single DOM element object for each slot. 
         // Indices 0, 1, 2, 3, 4 is the first row, 5, 6, 7, 8, 9 is the second row etc. Index 25 should be the "d(w1)d(w1)" bottom one, outside and below the 5x5 grid.
@@ -235,12 +239,15 @@
         
 
         var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns', 'http://www.w3.org/2000/svg');
         svg.setAttribute('style', 'display: block');    // affects only svgs less than 14x14px in size, otherwise those are misplaced on marker: https://stackoverflow.com/questions/75342672/leaflet-small-divicons-less-than-14px-do-not-align-at-center-of-point
+        svg.setAttribute('font-family', (options.fontFamily instanceof Array ? (options.fontFamily.length>1 ? options.fontFamily.join(", ") : options.fontFamily[0]) : options.fontFamily));
+        svg.setAttribute('font-weight', options.fontWeight);
         svg.setAttribute('width', 100);
         svg.setAttribute('height', 100);                // 100x100 canvas for whole symbol
         svg.setAttribute('viewBox', "0 0 100 100");     // 100x100 canvas for whole symbol
-        svg.setAttribute('transform', `scale(${options.scaling.stationModel+0.7})`);    // main scaling of whole plotting model symbol (default 1 = 1.7) - option available to end-user
-        svg.setAttribute('font-size', `${options.scaling.font-.35}em`);         // main font scaling (default 1 = 0.65em) - option available to end-user
+        //svg.setAttribute('transform', `scale(${options.scaling.stationModel+0.7})`);    // main scaling of whole plotting model symbol (default 1 = 1.7) - option available to end-user
+        svg.setAttribute('font-size', `${options.scaling.font-.52}rem`);         // main font scaling (default 1 scaling results in 0.48em) - option available to end-user
         //fontSize = "0.8em"
 
         // (debug) include the cell structure template svg as background:    
@@ -267,7 +274,7 @@
         myWorker.postMessage({SYNOP_raw: data.rawSynop, leafletID: data.leafletID});
         var decodedData = await waitForDecodedSynop(data.leafletID);
         decodedData = decodedData.decoded;
-        console.debug('decoded SYNOP:', decodedData);
+        console.debug(`Feature ${data.leafletID}: decoded SYNOP:`, decodedData);
         
         const startTimeAssembly = performance.now();
 
@@ -1011,7 +1018,7 @@
         svg.appendChild(circleSkyCover);*/
 
         const endTimeAssembly = performance.now();
-        console.debug(`Symbol assembly took: ${Math.round(endTimeAssembly - startTimeAssembly)} ms`);
+        console.debug(`Feature ${data.leafletID}: Symbol assembly took: ${Math.round(endTimeAssembly - startTimeAssembly)} ms`);
 
         return svg;
     }
@@ -1029,6 +1036,21 @@
         _main() {
             var options = this.options; // user-defined options on L.geoJSON() instantiation
 
+            // ensure defaults (since the scaling changes in module v1.1)
+            if (!options.hasOwnProperty('scaling')) {
+                options.scaling = {
+                    stationModel: 1,
+                    font: 1
+                };
+            } else {
+                if (!options.scaling.hasOwnProperty('stationModel')) {
+                    options.scaling.stationModel = 1;
+                }
+                if (!options.scaling.hasOwnProperty('font')) {
+                    options.scaling.font = 1;
+                }
+            }
+
             this.eachLayer(function(layer) {
 
                 // check if user-defined attribute in GeoJSON exists
@@ -1036,7 +1058,7 @@
                     console.error('Attribute field "'+options.field+'" does not exist in given GeoJSON. Please note that attribute field input is case-sensitve. Available attribute fields: '+JSON.stringify(layer.feature.properties));
                     return;
 
-                    // later, apply some default symbol for feature, indicating missing SYNOP report (instead of the Leaflet default blue pin)
+                    // later, apply some default symbol for feature, indicating a missing SYNOP report (instead of the Leaflet default blue pin)
                 } 
 
                 // check if user-defined attribute in GeoJSON has value
@@ -1044,8 +1066,10 @@
                     console.error('Attribute field "'+options.field+'" exists, but for this feature, has an empty string.');
                     return;
 
-                    // later, apply some default symbol for feature, indicating missing SYNOP report (instead of the Leaflet default blue pin)
+                    // later, apply some default symbol for feature, indicating a missing SYNOP report (instead of the Leaflet default blue pin)
                 } 
+
+                //layer.setIcon(null); // removes the default blue marker for point geometries in Leaflet, so they dont pop up before the station model symbols are applied
 
                 meteoStation(
                     {
@@ -1056,13 +1080,19 @@
                     options // user-options forwarded directly to the main staton model symbol generator module
                 )
                 .then((finalSymbol) => {
+                    console.debug(`Feature ${layer._leaflet_id}: FINALSYMBOL:`, finalSymbol);
+
                     var iconW = finalSymbol.getAttribute('width');
                     var iconH = finalSymbol.getAttribute('height');
+
+                    // adding 0.7 to the user-defined (or default 1) scaling ensures a good default for scaling the final SVG to be displayed in Leaflet
+                    // this is needed since module version 1.1, when global scaling was removed from the main SVG-generator module code and is now left to the wrapper code to deal with
+                    L.DomUtil.setTransform(finalSymbol, null, 0.7 + options.scaling.stationModel);
 
                     const svgIcon = L.divIcon({
                         html: finalSymbol,
                         className: "",
-                        iconSize: [iconW, iconH],
+                        //iconSize: [iconW, iconH],
                         iconAnchor: [iconW/2, iconH/2],
                     });           
 

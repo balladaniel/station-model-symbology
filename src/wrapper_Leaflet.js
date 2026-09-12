@@ -12,6 +12,21 @@ L.StationModels = L.GeoJSON.extend({
     _main() {
         var options = this.options; // user-defined options on L.geoJSON() instantiation
 
+        // ensure defaults (since the scaling changes in module v1.1)
+        if (!options.hasOwnProperty('scaling')) {
+            options.scaling = {
+                stationModel: 1,
+                font: 1
+            };
+        } else {
+            if (!options.scaling.hasOwnProperty('stationModel')) {
+                options.scaling.stationModel = 1;
+            }
+            if (!options.scaling.hasOwnProperty('font')) {
+                options.scaling.font = 1;
+            }
+        }
+
         this.eachLayer(function(layer) {
 
             // check if user-defined attribute in GeoJSON exists
@@ -19,7 +34,7 @@ L.StationModels = L.GeoJSON.extend({
                 console.error('Attribute field "'+options.field+'" does not exist in given GeoJSON. Please note that attribute field input is case-sensitve. Available attribute fields: '+JSON.stringify(layer.feature.properties));
                 return;
 
-                // later, apply some default symbol for feature, indicating missing SYNOP report (instead of the Leaflet default blue pin)
+                // later, apply some default symbol for feature, indicating a missing SYNOP report (instead of the Leaflet default blue pin)
             } 
 
             // check if user-defined attribute in GeoJSON has value
@@ -27,8 +42,10 @@ L.StationModels = L.GeoJSON.extend({
                 console.error('Attribute field "'+options.field+'" exists, but for this feature, has an empty string.');
                 return;
 
-                // later, apply some default symbol for feature, indicating missing SYNOP report (instead of the Leaflet default blue pin)
+                // later, apply some default symbol for feature, indicating a missing SYNOP report (instead of the Leaflet default blue pin)
             } 
+
+            //layer.setIcon(null); // removes the default blue marker for point geometries in Leaflet, so they dont pop up before the station model symbols are applied
 
             meteoStation(
                 {
@@ -39,13 +56,19 @@ L.StationModels = L.GeoJSON.extend({
                 options // user-options forwarded directly to the main staton model symbol generator module
             )
             .then((finalSymbol) => {
+                console.debug(`Feature ${layer._leaflet_id}: FINALSYMBOL:`, finalSymbol)
+
                 var iconW = finalSymbol.getAttribute('width');
                 var iconH = finalSymbol.getAttribute('height');
+
+                // adding 0.7 to the user-defined (or default 1) scaling ensures a good default for scaling the final SVG to be displayed in Leaflet
+                // this is needed since module version 1.1, when global scaling was removed from the main SVG-generator module code and is now left to the wrapper code to deal with
+                L.DomUtil.setTransform(finalSymbol, null, 0.7 + options.scaling.stationModel)
 
                 const svgIcon = L.divIcon({
                     html: finalSymbol,
                     className: "",
-                    iconSize: [iconW, iconH],
+                    //iconSize: [iconW, iconH],
                     iconAnchor: [iconW/2, iconH/2],
                 });           
 

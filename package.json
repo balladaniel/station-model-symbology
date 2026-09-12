@@ -1,6 +1,6 @@
 {
   "name": "station-model-symbology",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Dynamically generated, vector-based station model symbols for depicting weather observations on the client-side, for web maps. Compliant with WMO-No. 306 \"Manual on Codes\", Volume I-1, Attachment IV: https://library.wmo.int/records/item/35713-manual-on-codes-volume-i-1-international-codes",
   "type": "module",
   "main": "./src/main.js",
@@ -8,7 +8,8 @@
     "example": "examples"
   },
   "scripts": {
-    "build": "rollup -c"
+    "buildForLeaflet": "rollup --config rollup_Leaflet.config.js && @powershell copy 'dist/station-model-symbology-Leaflet-*.js' 'examples/'",
+    "buildForOpenLayers": "rollup --config rollup_OpenLayers.config.js && @powershell copy 'dist/station-model-symbology-OpenLayers-*.js' 'examples/'"
   },
   "keywords": [
     "station model",
@@ -25,6 +26,8 @@
   "author": "Dániel Balla <balla.daniel@inf.elte.hu>",
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "ol": "^10.9.0",
     "rollup": "^4.54.0",
     "rollup-plugin-web-worker-loader": "^1.7.0"
   }

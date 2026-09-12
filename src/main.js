@@ -163,15 +163,19 @@ async function meteoStation(data, pointCoords, userOptions){
             stationModel: 1,
             font: 1
         },
-        polyChromatic: true,
-        highCloudsInRed: true,
         temperature: "raw",
         dewPoint: "raw",
+        polyChromatic: true,
+        highCloudsInRed: true,
+        fontFamily: "Arial",
+        fontWeight: "normal",
         elementsToOmit: [],	// e.g. [0, 2, 3, 17, 18]. Any, except 12 (center station circle).
         debug: false
     };
     var appliedOptions = Object.assign(defaultOptions, userOptions);    // override default options with user-defined ones, if any
     var options = appliedOptions;
+
+    (options.fontFamily instanceof Array && options.fontFamily.length==0 ? console.warn("For option `fontFamily` you defined an empty array. Falling back to the OS default font. The option accepts either a single string of fallback font families or an array with one or more string items for the font family names.") : "");
 
     var radius = 6;
 
@@ -210,12 +214,15 @@ async function meteoStation(data, pointCoords, userOptions){
     
 
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns', 'http://www.w3.org/2000/svg')
     svg.setAttribute('style', 'display: block');    // affects only svgs less than 14x14px in size, otherwise those are misplaced on marker: https://stackoverflow.com/questions/75342672/leaflet-small-divicons-less-than-14px-do-not-align-at-center-of-point
+    svg.setAttribute('font-family', (options.fontFamily instanceof Array ? (options.fontFamily.length>1 ? options.fontFamily.join(", ") : options.fontFamily[0]) : options.fontFamily));
+    svg.setAttribute('font-weight', options.fontWeight);
     svg.setAttribute('width', 100);
     svg.setAttribute('height', 100);                // 100x100 canvas for whole symbol
     svg.setAttribute('viewBox', "0 0 100 100");     // 100x100 canvas for whole symbol
-    svg.setAttribute('transform', `scale(${options.scaling.stationModel+0.7})`);    // main scaling of whole plotting model symbol (default 1 = 1.7) - option available to end-user
-    svg.setAttribute('font-size', `${options.scaling.font-.35}em`);         // main font scaling (default 1 = 0.65em) - option available to end-user
+    //svg.setAttribute('transform', `scale(${options.scaling.stationModel+0.7})`);    // main scaling of whole plotting model symbol (default 1 = 1.7) - option available to end-user
+    svg.setAttribute('font-size', `${options.scaling.font-.52}rem`);         // main font scaling (default 1 scaling results in 0.48em) - option available to end-user
     //fontSize = "0.8em"
 
     // (debug) include the cell structure template svg as background:    
@@ -242,7 +249,7 @@ async function meteoStation(data, pointCoords, userOptions){
     myWorker.postMessage({SYNOP_raw: data.rawSynop, leafletID: data.leafletID});
     var decodedData = await waitForDecodedSynop(data.leafletID);
     decodedData = decodedData.decoded;
-    console.debug('decoded SYNOP:', decodedData)
+    console.debug(`Feature ${data.leafletID}: decoded SYNOP:`, decodedData)
     
     const startTimeAssembly = performance.now();
 
@@ -995,7 +1002,7 @@ async function meteoStation(data, pointCoords, userOptions){
     svg.appendChild(circleSkyCover);*/
 
     const endTimeAssembly = performance.now();
-    console.debug(`Symbol assembly took: ${Math.round(endTimeAssembly - startTimeAssembly)} ms`)
+    console.debug(`Feature ${data.leafletID}: Symbol assembly took: ${Math.round(endTimeAssembly - startTimeAssembly)} ms`)
 
     return svg;
 }

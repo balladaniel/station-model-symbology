@@ -7,23 +7,30 @@ Dynamically generated, vector-based station model symbols for depicting weather 
 
 ## Demo
 Below you can find links to three example web maps, which employ the module to dynamically generate symbology from surface weather observations stored as an attribute within GeoJSON. Data attribution is included with the respective examples.
-- [Europe (61 stations) - 21 Sep 2025, 12 UTC](https://balladaniel.github.io/station-model-symbology/examples/example_EU_20250921_12UTC.html)
-- [Hungary (26 stations) - 6 Sep 2025, 06 UTC](https://balladaniel.github.io/station-model-symbology/examples/example_HU_20250906_06UTC.html)
-- [Hungary (26 stations) - 17 Dec 2025, 14 UTC](https://balladaniel.github.io/station-model-symbology/examples/example_HU_20251217_14UTC.html)
 
-## Installation and Usage example for Leaflet
+- Europe (61 stations) - 21 Sep 2025, 12 UTC: [Leaflet](https://balladaniel.github.io/station-model-symbology/examples/example_Leaflet_EU_20250921_12UTC.html), [OpenLayers](https://balladaniel.github.io/station-model-symbology/examples/example_OpenLayers_EU_20250921_12UTC.html)
+- Hungary (26 stations) - 6 Sep 2025, 06 UTC: [Leaflet](https://balladaniel.github.io/station-model-symbology/examples/example_Leaflet_HU_20250906_06UTC.html), [OpenLayers](https://balladaniel.github.io/station-model-symbology/examples/example_OpenLayers_HU_20250906_06UTC.html)
+- Hungary (26 stations) - 17 Dec 2025, 14 UTC: [Leaflet](https://balladaniel.github.io/station-model-symbology/examples/example_Leaflet_HU_20251217_14UTC.html), [OpenLayers](https://balladaniel.github.io/station-model-symbology/examples/example_OpenLayers_HU_20251217_14UTC.html)
+
+## Installation and Usage example
 1. Have the following file structure in a common folder root:
-- `station-model-symbology-Leaflet-UMD.js` - module bundled with an easy-to-use wrapper. In this case, UMD version for Leaflet.
+- `station-model-symbology-[LEAFLET/OPENLAYERS]-[UMD/IIFE].js` - the module bundled with an easy- and ready-to-use wrapper for either Leaflet or OpenLayers. Choose the one for your web mapping library and between UMD/IIFE versions - if in doubt, go with the UMD version. You can find these in folder `./dist/` in the repository.
 - `pymetdecoder.zip` - module [pymetdecoder](https://github.com/antarctica/pymetdecoder/) as-is, as a .zip archive.
 - `symbols` folder - containing the weather symbols, in the same folder structure as in [WorldWeatherSymbols](https://github.com/OGCMetOceanDWG/WorldWeatherSymbols/).
 
-2. Include the bundled version that contains the wrapper for your preferred web mapping library: in this case, Leaflet.
+2. In your page, include the bundled version that contains the wrapper for your preferred web mapping library: 
 ``` html
+<!-- Leaflet UMD and IIFE -->
 <script src="./station-model-symbology-Leaflet-UMD.js" crossorigin=""></script>
+<script src="./station-model-symbology-Leaflet-IIFE.js" crossorigin=""></script>
+<!-- OpenLayers UMD and IIFE -->
+<script src="./station-model-symbology-OpenLayers-UMD.js" crossorigin=""></script>
+<script src="./station-model-symbology-OpenLayers-IIFE.js" crossorigin=""></script>
 ```
 
-3. In your script, provide a parsed GeoJSON as "data", like you would with an ordinary L.geoJSON layer. In options, define the attribute `field`, which contains encoded SYNOP strings for features:
+3. In your script, provide a parsed GeoJSON as "data", like you would with an ordinary L.geoJSON layer in Leaflet or with a GeoJSON VectorSource in OpenLayers. The required option `field` must be defined, indicating the attribute field name in the GeoJSON that contains encoded SYNOP strings:
 ``` javascript
+// data = parsed GeoJSON
 const layer = L.stationModels(data, {
     field: "synop", // required
     scaling: {
@@ -34,21 +41,27 @@ const layer = L.stationModels(data, {
     dewPoint: "raw",
     polyChromatic: true,
     highCloudsInRed: true,
-    elementsToOmit: []
+    fontFamily: "Arial, Open Sans, Roboto",
+    fontWeight: "normal",
+    elementsToOmit: [],
+    attribution: "Source Meteorological Service"
 }).addTo(map);
 ```
 
 ### Required options
 - `field <string>`: target attribute field name containing the encoded SYNOP string.
 
-### Additional options
-- `scaling <object>`: global options for fine-tuning symbology scaling. These affect all symbols. Should be adjusted based on subjective needs based on feature density, map scale, map extent and intended level of detail to be plotted.
+### Additional (optional) options
+- `scaling <object>`: global options for fine-tuning symbology scaling. These options affect all symbols. Should be adjusted based on subjective needs, readability and visual clarity, feature/data density, map scale, map extent and the intended level of detail to be plotted.
     - `stationModel <number>`: scaling for the final station model symbols. (default: 1)
-    - `font <number>`: font scaling within the station model symbols. (default: 1)
+    - `font <number>`: font scaling for elements with numerical values, within the station model symbols. (default: 1)
 - `temperature <string>`: ['raw'|'rounded'] plotting method for the temperature value TTT: "raw" plots tenths, "rounded" rounds value to the nearest degree. (default: 'raw') 
 - `dewPoint <string>`: ['raw'|'rounded'] plotting method for the dew-point temperature value T<sub>d</sub>T<sub>d</sub>T<sub>d</sub>: "raw" plots tenths, "rounded" rounds value to the nearest degree. (default: 'raw') 
-- `polyChromatic <boolean>`: if true, the polychromatic plotting method is used. This currently means, that the past weather reported from a manned station (W<sub>1</sub>W<sub>2</sub>) is plotted red, and amount (PPP) and characteristic of pressure tendency (a) will be plotted red, if pressure is decreasing (a >= 5). Moreover, in this case, the amount of pressure tendency (PPP) omits the minus sign. (default: true) *Note: This is an experimental option, can be refined/omitted later.*
+- `polyChromatic <boolean>`: if true, the polychromatic plotting method is used. This currently means that the past weather reported from a manned station (W<sub>1</sub>W<sub>2</sub>) is plotted red, and amount (PPP) and characteristic of pressure tendency (a) will be plotted red, if pressure is decreasing (a >= 5). Moreover, in this case, the amount of pressure tendency (PPP) omits the minus sign. (default: true) *Note: This is an experimental option, can be refined/omitted later.*
 - `highCloudsInRed <boolean>`: if true, C<sub>H</sub> symbol for high-altitude clouds is plotted in red. WMO-No. 306 optionally permits this. (default: true)
+- `fontFamily <string>|<array<string>>`: font families to be used in slots with numerical elements, with fallback in order. The value is directly used in the symbol SVG's [font-family](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/font-family) attribute. This was introduced for OpenLayers compatibility, since, compared to Leaflet, it is harder to change the CSS properties of rendered text in the Canvas of OpenLayers. In Leaflet you can use it, but do not necessarily need this option, as you can also adjust font properties directly from CSS. (default: "Arial")
+- `fontWeight <string>`: ['normal'|'bold'|'bolder'|'lighter'|'number'] font weight to be used in slots with numerical elements. The value is directly used in the symbol SVG's [font-weight](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/font-weight) attribute. This was introduced for OpenLayers compatibility, since, compared to Leaflet, it is harder to change the CSS properties of rendered text in the Canvas of OpenLayers. In Leaflet you can use it, but do not necessarily need this option, as you can also adjust font properties directly from CSS. (default: "normal")
+- `attribution <string>`: data attribution string. With Leaflet, this is fed to the "attribution" option of the native L.geoJSON class (as it extends L.geoJSON) and is handled by Leaflet, nothing changes. With OpenLayers, this is passed to the resulting VectorLayer/VectorSource as the "attributions" option, done in the wrapper. (default: "", shows a warning in console if not set)
 - `elementsToOmit <array<integer>>`: an array of element cell numbers to omit from the final symbol, regardless of data availability. Cell 12 (central station circle / cloud cover / wind shaft / manner of station) can not be hidden. For the cell numbers, refer to the illustration below and page A-441 of WMO-No. 306. Example: [6, 10, 11] will hide temperature value (TTT), horizontal visibility code figure (VV) and present weather symbol (ww/w<sub>a</sub>w<sub>a</sub>). (default: [])
 
 ![Cell numbering illustration, in reference to the WMO representation](slot_numbering.png)
@@ -56,12 +69,15 @@ const layer = L.stationModels(data, {
 ## Components
 Source code is structured as follows:
 - `main_worker.js` - Code to be run in a Web Worker. Runs [Pyodide](https://github.com/pyodide/pyodide) and module pymetdecoder to decode the SYNOP reports. Requires `pymetdecoder.zip`.
-- `main.js` - Main code logic for building station model symbols. Requires `main_worker.js`.
-- `wrapper_Leaflet.js` - An example for a wrapper, written for Leaflet. Extends L.geoJSON. Tested with Leaflet v1.9.4. (In the future, creating wrappers for other web mapping libraries is planned.)
+- `main.js` - Main code logic for assembling the station model symbols. Requires `main_worker.js`.
+- `wrapper_Leaflet.js` - Wrapper for Leaflet. Extends L.geoJSON. Tested with Leaflet v1.9.4. 
+- `wrapper_OpenLayers.js` - Wrapper for OpenLayers. Tested with OpenLayers v10.10.0.
 
-Since the main module receives the encoded SYNOP data and outputs an assembled, final SVG symbol for a SYNOP message, the module itself (`main.js` + `main_worker.js`) can be implemented in any software architecture that expects SVG symbols. The module was developed with the intention of using the symbols on Leaflet- and OpenLayers-based web maps. The bundle file is compiled with [Rollup](https://github.com/rollup/rollup), targeting the given wrapper as the entry point, resulting in a single file ready to be used with the given web mapping library. Alternatively, by changing the input of the Rollup config from the wrapper to `main.js`, you can have a single file for the module itself, that can be implemented in other workflows, not just for symbology on web maps.
+In the future, creating wrappers for other web mapping libraries is planned.
+
+Since the main module receives the encoded SYNOP data and outputs an assembled, final SVG symbol for a SYNOP message, the module itself (`main.js` + `main_worker.js`) can be implemented in any software architecture that expects SVG symbols. The module was developed with the intention of using the symbols on Leaflet- and OpenLayers-based web maps. The bundle files are compiled with [Rollup](https://github.com/rollup/rollup), targeting the given wrapper as the entry point, resulting in a single file ready to be used with the given web mapping library. Separate Rollup config files are available to compile for Leaflet and OpenLayers (`rollup_Leaflet.config.js` and `rollup_OpenLayers.config.js`). Alternatively, by changing the input of the Rollup config from the wrapper to `main.js`, you can have a single file for the module itself, that can be implemented in other workflows, not just for symbology on web maps.
 
 ## How to cite
 If you use the module itself or output produced by the module in connection with a scientific publication, please refer to: 
 
-**Balla, D. and Gede, M.: From SYNOP to Station Model Symbols on Web Maps: Leveraging Web Technologies to Implement Standardized WMO Symbology for Synoptic Surface Weather Charts, ISPRS International Journal of Geo-Information, 15(4), 150, https://doi.org/10.3390/ijgi15040150, 2026.**
+**Balla, D. and Gede, M. (2026): From SYNOP to Station Model Symbols on Web Maps: Leveraging Web Technologies to Implement Standardized WMO Symbology for Synoptic Surface Weather Charts, *ISPRS International Journal of Geo-Information*, 15(4), 150, https://doi.org/10.3390/ijgi15040150**

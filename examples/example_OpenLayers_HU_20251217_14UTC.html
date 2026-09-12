@@ -1,0 +1,171 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!--<title></title>-->
+
+		<!-- OpenLayers from CDN -->
+		<script src="https://cdn.jsdelivr.net/npm/ol@v10.10.0/dist/ol.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.10.0/ol.css">
+		<!-- ol-layerswitcher from CDN -->
+		<script src="https://cdn.jsdelivr.net/npm/ol-layerswitcher@4.1.2/dist/ol-layerswitcher.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol-layerswitcher@4.1.2/dist/ol-layerswitcher.css" />
+
+		<!-- station-model-symbology: OL wrapper version -->
+		<script src="./station-model-symbology-OpenLayers-UMD.js" crossorigin=""></script>
+
+		<style>
+			html, body {
+				height: 100%;
+				margin: 0;
+			}
+			
+			#map {
+				position: absolute;
+				margin: auto;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+			}	
+			
+			.infopanel {
+				position: absolute; 
+				font: 14px/16px Arial, Helvetica, sans-serif;
+				z-index: 999; 
+				bottom: 0px; 
+				right: 0px;
+				padding: 6px 8px;
+				background: rgba(255, 255, 255, 0.8);
+				box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+				border-radius: 5px;
+				margin-right: 10px;
+				margin-bottom: 27px;
+			}
+		</style>
+	</head>
+	<body>		
+		<div id="map"></div>	
+		<div class="infopanel">
+			<div style="display: flex; flex-direction: column; max-width: 515px; text-align: center; row-gap: 8px">
+				<div style="font-weight: bold">
+					Surface Weather Observations for Hungary, 17 December 2025, 14 UTC
+				</div>
+				<div>
+					This is an OpenLayers example page showcasing <i>station-model-symbology</i>, a JavaScript module for dynamically generated, vector-based station model symbols from encoded SYNOP data, depicting weather observations on the client-side, for web maps.<br>
+					Data source: Hungarian Meteorological Service through Ogimet<br><br>
+					Leaflet demos: <a href="./example_Leaflet_EU_20250921_12UTC.html">EU / 21 Sep 2025</a>, <a href="./example_Leaflet_HU_20250906_06UTC.html">HU / 6 Sep 2025</a>, <a href="./example_Leaflet_HU_20251217_14UTC.html">HU / 17 Dec 2025</a><br>
+					Other OpenLayers demos: <a href="./example_OpenLayers_EU_20250921_12UTC.html">EU / 21 Sep 2025</a>, <a href="./example_OpenLayers_HU_20250906_06UTC.html">HU / 6 Sep 2025</a><br><br>
+					Project page: <b><a href="https://github.com/balladaniel/station-model-symbology">https://github.com/balladaniel/station-model-symbology</a></b>
+				</div>
+			</div>
+		</div>					
+		<script>	
+
+			// carto API key - restricted to domain
+			var cartoKey = 'cb1_3fpi_1_9bb9b282ea7b7476f058db9a';
+			
+			var carto_attrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
+
+			// fetch the .geojson, then start working
+			fetch('./data/hungary_2025-12-17_14UTC_OGIMET_HUNGAROMET.geojson').then(r => r.json()).then(d => {
+
+				// base map layers
+				var OSM = new ol.layer.Tile({
+					title: "OpenStreetMap",
+					type: 'base',
+					visible: false,
+					source: new ol.source.OSM()
+				});
+				var carto_dark = new ol.layer.Tile({
+					title: "Carto Dark",
+					type: 'base',
+					visible: false,
+					source: new ol.source.XYZ({
+						attributions: carto_attrib,
+						url: "https://{a-d}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png" + `?key=${cartoKey}`
+					})
+				});
+				var carto_voyager = new ol.layer.Tile({
+					title: "Carto Voyager",
+					type: 'base',
+					visible: false,
+					source: new ol.source.XYZ({
+						attributions: carto_attrib,
+						url: "https://{a-d}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png" + `?key=${cartoKey}`
+					})
+				});
+				var carto_voyager_nolabels = new ol.layer.Tile({
+					title: "Carto Voyager (no labels)",
+					type: 'base',
+					visible: false,
+					source: new ol.source.XYZ({
+						attributions: carto_attrib,
+						url: "https://{a-d}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png" + `?key=${cartoKey}`
+					})
+				});
+				var carto_positron = new ol.layer.Tile({
+					title: "Carto Positron",
+					type: 'base',
+					visible: false,
+					source: new ol.source.XYZ({
+						attributions: carto_attrib,
+						url: "https://{a-d}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" + `?key=${cartoKey}`
+					})
+				});
+				var carto_positron_nolabels = new ol.layer.Tile({
+					title: "Carto Positron (no labels)",
+					type: 'base',
+					visible: true,
+					source: new ol.source.XYZ({
+						attributions: carto_attrib,
+						url: "https://{a-d}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png" + `?key=${cartoKey}`
+					})
+				});
+
+				const baseMaps = new ol.layer.Group({
+					title: 'Base maps',
+					layers: [OSM, carto_dark, carto_voyager, carto_voyager_nolabels, carto_positron, carto_positron_nolabels]
+				});
+
+				// OpenLayers map init + station-model-symbology
+				var map = new ol.Map({
+					target: 'map',
+					layers: [
+						baseMaps,
+						ol.stationModels(d, {
+							field: "synop",
+							scaling: {
+								stationModel: 1,
+								font: 1
+							},
+							temperature: "raw",
+							dewPoint: "raw",
+							//polyChromatic: false,
+							//highCloudsInRed: false,
+							fontFamily: "Arial, Open Sans, Roboto",
+							fontWeight: "normal",
+							//elementsToOmit: [17, 18],	// e.g. [0, 2, 3, 17, 18]. Any, except 12 (center station circle).
+							debug: false,
+							attribution: 'Data source: Hungarian Meteorological Service through Ogimet'
+						})
+					],
+					view: new ol.View({
+						center: ol.proj.fromLonLat([19.3, 47.3]),
+						zoom: 8
+					})					
+				})
+
+				// ol-layerswitcher
+				const layerSwitcher = new LayerSwitcher({
+					reverse: false,
+					groupSelectStyle: 'group'
+				});
+				map.addControl(layerSwitcher);
+				
+			});
+
+		</script>	
+	</body>
+</html>

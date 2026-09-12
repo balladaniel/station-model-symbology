@@ -4,7 +4,7 @@
  * Decodes SYNOP reports with Python module pymetdecoder, within Pyodide. Requires "pymetdecoder.zip" in the same folder
  */
 
-console.log('WEB WORKER INITIALIZING (before receiving any message)')
+console.debug('WEB WORKER INITIALIZING (before receiving any message)')
 
 importScripts("https://cdn.jsdelivr.net/pyodide/v0.29.0/full/pyodide.js") // pyodide from CDN
 //importScripts("./pyodide.js") // pyodide locally
@@ -19,12 +19,12 @@ var base;
 var absolute;
 
 async function startPyodide() {
-    console.log('WORKER: Pyodide is not running, starting up...')
+    console.debug('WORKER: Pyodide is not running, starting up...')
     // Load Pyodide
     startTimePyodideStartup = performance.now();
     pyodideStarting = true;
     var pyodide = await loadPyodide({fullStdLib: false});
-    console.log(`WORKER: Pyodide version ${pyodide.version} started.`)
+    console.debug(`WORKER: Pyodide version ${pyodide.version} started.`)
     endTimePyodideStartup = performance.now();
 
     // get, then import pymetdecoder lib in Pyodide env
@@ -36,7 +36,7 @@ async function startPyodide() {
     pyodide.pyimport("pymetdecoder");
     endTimePyodideImport = performance.now();
 
-    console.log('WORKER: Pymetdecoder imported, starting processing Queue')
+    console.debug('WORKER: Pymetdecoder imported, starting processing Queue')
     pyodideStarting = false;
 
     console.table({
@@ -51,7 +51,7 @@ async function startPyodide() {
 
 function decodeSynop(encoded) {
 
-    console.debug('decodeSynop starting to process:', encoded)
+    console.debug(`WORKER / feature ID ${encoded.leafletID}: decodeSynop starting to process:`, encoded)
 
     const dataToPass = {
         synopString: encoded.SYNOP_raw
@@ -77,14 +77,14 @@ function decodeSynop(encoded) {
     var parsed = JSON.parse(decoded)
     parsed['_raw'] = encoded.SYNOP_raw; // include raw encoded SYNOP string for debug purposes
 
-    console.debug("WORKER: Posting message back to main script");
+    console.debug(`WORKER / feature ID ${encoded.leafletID}: Posting message back to main script`);
     // send decoded SYNOP data out of worker to the Main code thread
     postMessage({decoded: parsed, leafletID: encoded.leafletID});
     const endTimeWorker = performance.now();
 
     //console.debug(`WORKER: finished working. Took ${Math.round(endTimeWorker - startTimeWorker)} ms total, of which:`)
  
-    console.debug('This Synop decoding took (ms)', Math.round(endTimeSynop - startTimeSynop))
+    console.debug(`WORKER / feature ID ${encoded.leafletID}: This Synop decoding took ${Math.round(endTimeSynop - startTimeSynop)} ms.`)
 }
 
 function processQueue(){
@@ -92,12 +92,12 @@ function processQueue(){
     while (messageQueue.length > 0) {
         decodeSynop(messageQueue.shift());
     }
-    console.log('WORKER: Queue processing finished, queue is now empty.')
+    console.debug('WORKER: Queue processing finished, queue is now empty.')
     processQueueIsRunning = false;
 }
 
 function handleMessage(e){  
-    console.log("WORKER: Message received from main script, with data:", e.data);
+    console.debug("WORKER: Message received from main script, with data:", e.data);
 
     const startTimeWorker = performance.now();
 
@@ -107,9 +107,9 @@ function handleMessage(e){
     } else {
         // check if pyodide is still starting when the message is received. If so, put in queue.
         if (pyodideStarting) {
-            console.log('WORKER: Pyodide still starting! Message/data put into queue.')
+            console.debug('WORKER: Pyodide still starting! Message/data put into queue.')
             messageQueue.push(e.data);
-            //console.log(messageQueue)
+            //console.debug(messageQueue)
         } else {
         // pyodide is running, put msg in queue. If processing the queue is not running, start.
             messageQueue.push(e.data);
@@ -129,7 +129,7 @@ onmessage = (e) => {
         // to have current baseURI: https://stackoverflow.com/a/4019297
         base = e.data;
         absolute = new URL( "./pymetdecoder.zip", base );   //pymetdecoder.zip should also be supplied. Always in the same folder, as the main JS file (bundle or not)
-        console.log('base ', base, absolute)
+        console.debug('base ', base, absolute)
 
         startPyodide().then(pyodide => {
             ctx = pyodide;
