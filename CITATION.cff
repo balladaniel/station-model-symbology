@@ -23,7 +23,7 @@ identifiers:
       https://www.mdpi.com/2220-9964/15/4/150
 repository-code: 'https://github.com/balladaniel/station-model-symbology'
 title: "From SYNOP to Station Model Symbols on Web Maps: Leveraging Web Technologies to Implement Standardized WMO Symbology for Synoptic Surface Weather Charts"
-version: 1.0.0
+version: 1.1.0
 url: https://www.mdpi.com/2220-9964/15/4/150
 doi: 10.3390/ijgi15040150
 date-released: '2026-04-01'
