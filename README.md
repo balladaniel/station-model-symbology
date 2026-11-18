@@ -1,4 +1,7 @@
 # station-model-symbology
+
+[![DOI](https://img.shields.io/badge/DOI-10.3390/ijgi15040150-green)](https://doi.org/10.3390/ijgi15040150)
+
 Dynamically generated, vector-based station model symbols for depicting weather observations on the client-side, intended for web maps. Compliant with [WMO-No. 306 "Manual on Codes", Volume I-1, Attachment IV](https://library.wmo.int/records/item/35713-manual-on-codes-volume-i-1-international-codes). 
 
 *Disclaimer: The module is a work in progress, under development. Documentation is not final and might not be fully up-to-date. While striving to be covering all rules and supporting all options defined by the WMO document, there might be some elements or features that are not fully implemented yet.*
